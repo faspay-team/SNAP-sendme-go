@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"faspay-sendme-snap-go/snap" // Import the snap package using the module path
+	"github.com/faspay-team/faspay-sendme-snap-go/snap"
 )
 
 // This example demonstrates how to use the Faspay SendMe Snap SDK to perform various operations.
