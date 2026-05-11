@@ -197,7 +197,6 @@ func (c *Client) parseResponse(resp *http.Response, v any) error {
 	if err != nil {
 		return fmt.Errorf("error reading response body: %w", err)
 	}
-	println("resp: ", string(body))
 
 	if v != nil {
 		if err := json.Unmarshal(body, v); err != nil {
