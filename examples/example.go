@@ -26,9 +26,11 @@ func main() {
 	partnerId := "99999" // Your 5-digit partner ID
 
 	// Create a new client with a custom timeout
+	// Pass nil for sslCert if you don't use a custom CA certificate
 	client, err := snap.NewClient(
 		partnerId,
 		privateKey,
+		nil,                              // sslCert: pass nil to use default system CA, or provide your custom CA cert bytes
 		snap.WithTimeout(60*time.Second), // Optional: Set a custom timeout
 	)
 	if err != nil {
