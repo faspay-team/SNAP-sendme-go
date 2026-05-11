@@ -1,7 +1,7 @@
 package snap
 
 const (
-	baseUrlSandbox = "https://account-staging.faspay.co.id"
+	baseUrlSandbox = "https://sendme-sandbox.faspay.co.id"
 	baseUrlProd    = "https://sendme.faspay.co.id"
 )
 

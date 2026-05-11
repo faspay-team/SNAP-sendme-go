@@ -53,18 +53,23 @@ func TestClient_TransferInterBank(t *testing.T) {
 		t.Fatalf("Failed to create client: %v", err)
 	}
 
+	err = client.SetEnv("sandbox")
+	if err != nil {
+		t.Fatalf("Failed to set environment: %v", err)
+	}
+
 	res, err := client.TransferInterBank(context.Background(), &TransferInterBankRequest{
-		PartnerReferenceNo: "20250609103003235",
+		PartnerReferenceNo: "20260511112916088",
 		Amount: &Amount{
-			Value:    "59614.00",
+			Value:    "10000.00",
 			Currency: "IDR",
 		},
-		BeneficiaryAccountName: "GolangTestAjoji Ajojo",
-		BeneficiaryAccountNo:   "60004400184",
+		BeneficiaryAccountName: "andre maesha",
+		BeneficiaryAccountNo:   "87742290748",
 		BeneficiaryBankCode:    "008",
-		BeneficiaryEmail:       "aan28setiawan@gmail.com",
+		BeneficiaryEmail:       "andre.maesha@faspay.co.id",
 		SourceAccountNo:        "9920017573",
-		TransactionDate:        "2025-06-09T10:30:03+07:00",
+		TransactionDate:        "2026-05-11T11:29:16+07:00",
 		AdditionalInfo: &AdditionalInfoTransferInterBank{
 			InstructDate:           "",
 			TransactionDescription: "snapmandiri20250609103003",
@@ -72,7 +77,7 @@ func TestClient_TransferInterBank(t *testing.T) {
 		},
 	})
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	println(res.ResponseMessage)
