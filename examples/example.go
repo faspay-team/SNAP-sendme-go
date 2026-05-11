@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/faspay-team/faspay-sendme-snap-go/snap"
+	"github.com/faspay-team/SNAP-sendme-go/snap"
 )
 
 // This example demonstrates how to use the Faspay SendMe Snap SDK to perform various operations.
