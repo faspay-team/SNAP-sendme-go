@@ -5,7 +5,7 @@ A Go client library for integrating Faspay's SendMe Snap API. This library provi
 ## Installation
 
 ```bash
-go get github.com/faspay-team/faspay-sendme-snap-go
+go get github.com/faspay-team/SNAP-sendme-go
 ```
 
 ## Features
@@ -30,7 +30,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/faspay-team/faspay-sendme-snap-go/snap"
+	"github.com/faspay-team/SNAP-sendme-go/snap"
 )
 
 func main() {
