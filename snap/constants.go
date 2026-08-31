@@ -20,6 +20,7 @@ const (
 
 // Default configuration values
 const (
-	DefaultTimeout = 30                                 // Default timeout in seconds
-	DefaultBaseURL = "https://account-dev.faspay.co.id" // Default API base URL
+	DefaultTimeout   = 30                            // Default timeout in seconds
+	DefaultBaseURL   = "https://sendme.faspay.co.id" // Default API base URL
+	DefaultChannelID = "88001"                       // Default CHANNEL-ID header value
 )
