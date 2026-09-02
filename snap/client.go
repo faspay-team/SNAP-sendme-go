@@ -30,6 +30,7 @@ type Client struct {
 	PartnerId   string
 	privateKey  []byte
 	timeout     time.Duration
+	channelID   string
 }
 
 // ClientOption is a function that configures a Client
@@ -50,6 +51,15 @@ func WithHTTPClient(httpClient *http.Client) ClientOption {
 	}
 }
 
+// WithChannelID overrides the CHANNEL-ID header sent with every request.
+// Defaults to DefaultChannelID if not set, since most partners are provisioned
+// with the standard SendMe channel.
+func WithChannelID(channelID string) ClientOption {
+	return func(c *Client) {
+		c.channelID = channelID
+	}
+}
+
 // NewClient initializes and returns a new Client instance with the given API key, secret, and optional configurations.
 func NewClient(partnerId string, privateKey, sslCert []byte, options ...ClientOption) (Services, error) {
 	caCertPool := x509.NewCertPool()
@@ -67,6 +77,7 @@ func NewClient(partnerId string, privateKey, sslCert []byte, options ...ClientOp
 		PartnerId:  partnerId,
 		privateKey: privateKey,
 		timeout:    time.Duration(DefaultTimeout) * time.Second,
+		channelID:  DefaultChannelID,
 	}
 
 	if client.baseURL == "" {
@@ -118,7 +129,7 @@ func (c *Client) doRequest(ctx context.Context, method, path string, body interf
 	req.Header.Set("X-SIGNATURE", signature)
 	req.Header.Set("X-PARTNER-ID", c.PartnerId)
 	req.Header.Set("X-EXTERNAL-ID", c.generateRandomNumber())
-	req.Header.Set("CHANNEL-ID", "88001")
+	req.Header.Set("CHANNEL-ID", c.channelID)
 
 	if c.environment == "sandbox" {
 		println("Info: Transaction will be processed in sandbox mode")
